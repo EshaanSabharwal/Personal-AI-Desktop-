@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import PhotoImage
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageSequence
 import threading
 import speech_recognition as sr
 import pyttsx3
@@ -91,7 +91,7 @@ def start_assistant():
             speak("Goodbye!")
             break
         else:
-            speak("I can help you with Google search, YouTube search, or tell you the time.")
+            speak("I can help you with Google search, YouTube search, tell you the time, Open App, Shutdown, Restart or Lock your System.")
 
 def threaded_assistant():
     thread = threading.Thread(target=start_assistant)
@@ -105,15 +105,34 @@ app.title("J.A.R.V.I.S - AI Desktop Assistant")
 app.geometry("800x600")
 app.config(bg="#0f0f0f")
 
+#Background GIF 
+#gif_path = "Tech.gif"  # Make sure you have an animated GIF
+
+#bg_image = Image.open("Iron Man.gif")
+#frames = [ImageTk.PhotoImage(img.resize((1500, 800), Image.Resampling.LANCZOS)) for img in ImageSequence.Iterator(bg_image)]
+
+#bg_label = tk.Label(app)
+#bg_label.pack(fill="both", expand=True)
+
+#def update_frame(frame_index):
+   # frame = frames[frame_index]
+   # bg_label.config(image=frame)
+   # frame_index = (frame_index + 1) % len(frames)
+   # app.after(100, update_frame, frame_index)  # Adjust speed if you want
+
+#update_frame(0)
+
+
+
 # Background Image
-bg_img = Image.open("a-0025.JPG")  # Replace with your GIF/image path
-bg_img = bg_img.resize((800, 600), Image.ANTIALIAS)
+bg_img = Image.open("IR.jpg")  # Replace with your GIF/image path
+bg_img = bg_img.resize((1500, 950), Image.Resampling.LANCZOS)
 bg_photo = ImageTk.PhotoImage(bg_img)
 bg_label = tk.Label(app, image=bg_photo)
 bg_label.place(x=0, y=0)
 
 # Output Display
-output_label = tk.Label(app, text="Welcome, J.A.R.V.I.S online.", font=("Helvetica", 16), bg="#000000", fg="white")
+output_label = tk.Label(app, text="Welcome, J.A.R.V.I.S online.", font=("Times New Roman", 16), bg="#000000", fg="white")
 output_label.pack(pady=20)
 
 # Control Buttons
